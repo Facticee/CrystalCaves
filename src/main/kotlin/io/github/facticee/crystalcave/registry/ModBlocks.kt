@@ -12,12 +12,16 @@ import net.minecraft.world.level.block.state.BlockBehaviour
 object ModBlocks {
 
     lateinit var CRYSTAL_STONE: Block
+    lateinit var CRYSTAL_TUFF: Block
 
     lateinit var SAPPHIRE_ORE: Block
+    lateinit var DEEPSLATE_SAPPHIRE_ORE: Block
 
     lateinit var MOONSTONE_ORE: Block
+    lateinit var DEEPSLATE_MOONSTONE_ORE: Block
 
     lateinit var TOPAZ_ORE: Block
+    lateinit var DEEPSLATE_TOPAZ_ORE: Block
 
     lateinit var SAPPHIRE_BLOCK: Block
     lateinit var MOONSTONE_BLOCK: Block
@@ -53,20 +57,36 @@ object ModBlocks {
                 .sound(SoundType.STONE)
         )
 
+        CRYSTAL_TUFF = register(
+            "crystal_tuff",
+            BlockBehaviour.Properties.of()
+                .strength(2.5f, 6f)
+                .sound(SoundType.TUFF)
+        )
+
         SAPPHIRE_ORE = registerSpecial("sapphire_ore", BlockBehaviour.Properties.of().strength(3f)) {
             CrystalOreBlock(it)
         }
 
+        DEEPSLATE_SAPPHIRE_ORE = registerSpecial("deepslate_sapphire_ore", BlockBehaviour.Properties.of().strength(4.5f)) {
+            CrystalOreBlock(it)
+        }
 
         MOONSTONE_ORE = registerSpecial("moonstone_ore", BlockBehaviour.Properties.of().strength(3f)) {
             CrystalOreBlock(it)
         }
 
+        DEEPSLATE_MOONSTONE_ORE = registerSpecial("deepslate_moonstone_ore", BlockBehaviour.Properties.of().strength(4.5f)) {
+            CrystalOreBlock(it)
+        }
 
         TOPAZ_ORE = registerSpecial("topaz_ore", BlockBehaviour.Properties.of().strength(3f)) {
             CrystalOreBlock(it)
         }
 
+        DEEPSLATE_TOPAZ_ORE = registerSpecial("deepslate_topaz_ore", BlockBehaviour.Properties.of().strength(4.5f)) {
+            CrystalOreBlock(it)
+        }
 
         SAPPHIRE_BLOCK = register(
             "sapphire_block",
