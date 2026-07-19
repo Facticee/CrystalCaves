@@ -1,22 +1,43 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
-    kotlin("jvm") version "2.3.21"
+    id("net.fabricmc.fabric-loom")
+    id("org.jetbrains.kotlin.jvm") version "2.4.0"
+    id("com.gradleup.shadow") version "9.2.2"
 }
 
-group = "io.github.facticee"
-version = "1.0-SNAPSHOT"
-
-repositories {
-    mavenCentral()
-}
+version = providers.gradleProperty("mod_version").get()
 
 dependencies {
-    testImplementation(kotlin("test"))
+    minecraft("com.mojang:minecraft:${providers.gradleProperty("minecraft_version").get()}")
+    implementation("net.fabricmc:fabric-loader:${providers.gradleProperty("loader_version").get()}")
+    implementation("net.fabricmc.fabric-api:fabric-api:${providers.gradleProperty("fabric_api_version").get()}")
+    implementation("net.fabricmc:fabric-language-kotlin:${providers.gradleProperty("fabric_kotlin_version").get()}")
+
+    implementation("org.jetbrains.kotlin:kotlin-stdlib")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+}
+
+
+tasks.processResources {
+    inputs.property("version", version)
+    filesMatching("fabric.mod.json") {
+        expand("version" to version)
+    }
+}
+
+tasks.withType<JavaCompile>().configureEach {
+    options.release = 25
 }
 
 kotlin {
-    jvmToolchain(25)
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_25
+    }
 }
 
-tasks.test {
-    useJUnitPlatform()
+java {
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
 }
