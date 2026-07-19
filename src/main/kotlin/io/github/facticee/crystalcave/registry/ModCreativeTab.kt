@@ -31,9 +31,34 @@ object ModCreativeTab {
             }
             .displayItems { _, output ->
 
-                // TEST
+                // crystals
                 output.accept(ModItems.SAPPHIRE)
-                
+                output.accept(ModItems.MOONSTONE)
+                output.accept(ModItems.TOPAZ)
+                output.accept(ModItems.RAW_SAPPHIRE)
+                output.accept(ModItems.RAW_MOONSTONE)
+
+
+                // Ores
+                output.accept(ModItems.SAPPHIRE_ORE)
+                output.accept(ModItems.DEEPSLATE_SAPPHIRE_ORE)
+                output.accept(ModItems.MOONSTONE_ORE)
+                output.accept(ModItems.DEEPSLATE_MOONSTONE_ORE)
+                output.accept(ModItems.TOPAZ_ORE)
+                output.accept(ModItems.DEEPSLATE_TOPAZ_ORE)
+
+                // Blocks
+                output.accept(ModItems.CRYSTAL_STONE)
+                output.accept(ModItems.CRYSTAL_TUFF)
+
+                output.accept(ModItems.SAPPHIRE_BLOCK)
+                output.accept(ModItems.MOONSTONE_BLOCK)
+
+                output.accept(ModItems.TOPAZ_BLOCK)
+                output.accept(ModItems.TOPAZ_SLAB)
+                output.accept(ModItems.TOPAZ_STAIRS)
+                output.accept(ModItems.TOPAZ_WALL)
+                output.accept(ModItems.TOPAZ_PILLAR)
             }
             .build()
     )
