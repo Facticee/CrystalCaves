@@ -1,5 +1,6 @@
 package io.github.facticee.crystalcave.registry
 
+import io.github.facticee.crystalcave.items.MoonstoneUpgradeRecipe
 import io.github.facticee.crystalcave.items.SapphireUpgradeRecipe
 import net.minecraft.core.Registry
 import net.minecraft.core.registries.BuiltInRegistries
@@ -18,7 +19,19 @@ object ModRecipes {
             )
         )
 
+    val MOONSTONE_UPGRADE_SERIALIZER: RecipeSerializer<MoonstoneUpgradeRecipe> =
+        Registry.register(
+            BuiltInRegistries.RECIPE_SERIALIZER,
+            Identifier.fromNamespaceAndPath("crystalcave", "moonstone_upgrade"),
+            RecipeSerializer(
+                MoonstoneUpgradeRecipe.CODEC,
+                MoonstoneUpgradeRecipe.STREAM_CODEC
+            )
+        )
+
+
     fun registerAll() {
         SAPPHIRE_UPGRADE_SERIALIZER
+        MOONSTONE_UPGRADE_SERIALIZER
     }
 }
