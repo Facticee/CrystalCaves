@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "crystalcave",
+  "version": "${version}",
+  "name": "Crystal Caves",
+  "description": "New caves, ores and items",
+  "authors": [ "YourName" ],
+  "contact": {},
+  "license": "AGPL-3.0",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.facticee.crystalcave.CrystalCaveMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~26.2",
+    "fabric-api": "*",
+    "fabric-language-kotlin": ">=1.13.12"
+  }
+}
