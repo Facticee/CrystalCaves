@@ -12,9 +12,12 @@ class CrystalChamberFeature(codec: Codec<CrystalChamberConfig>) : Feature<Crysta
         val config = context.config()
         val origin = context.origin()
 
-        val radius = config.radius.sample(random)
+        val radius = config.radius.sample(random).toFloat()
 
-        if (radius <= 0) return false
+        CrystalShapePainter.paintChamber(
+            level, random, config.palette, origin, radius,
+            config.innerThickness, config.middleThickness, config.outerThickness
+        )
 
         return true
     }
