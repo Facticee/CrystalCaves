@@ -3,8 +3,10 @@ package io.github.facticee.crystalcave
 import io.github.facticee.crystalcave.registry.ModBlocks
 import io.github.facticee.crystalcave.registry.ModCreativeTab
 import io.github.facticee.crystalcave.items.MoonstoneUpgradeRecipe
+import io.github.facticee.crystalcave.registry.ModFeatures
 import io.github.facticee.crystalcave.registry.ModItems
 import io.github.facticee.crystalcave.registry.ModRecipes
+import io.github.facticee.crystalcave.world.ModWorldGen
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.minecraft.world.entity.Mob
@@ -28,7 +30,8 @@ class CrystalCaveMod : ModInitializer {
         ModCreativeTab.registerAll()
         ModItems.registerAll()
         ModRecipes.registerAll()
-        
+        ModFeatures.registerAll()
+        ModWorldGen.registerAll()
 
 
         ServerTickEvents.END_SERVER_TICK.register { server ->

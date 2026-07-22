@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "crystalcave:crystal_stone",
+    "crystalcave:crystal_tuff",
+    "crystalcave:sapphire_ore",
+    "crystalcave:deepslate_sapphire_ore",
+    "crystalcave:moonstone_ore",
+    "crystalcave:deepslate_moonstone_ore",
+    "crystalcave:topaz_ore",
+    "crystalcave:deepslate_topaz_ore",
+    "crystalcave:sapphire_block",
+    "crystalcave:moonstone_block",
+    "crystalcave:topaz_block",
+    "crystalcave:topaz_slab",
+    "crystalcave:topaz_stairs",
+    "crystalcave:topaz_wall",
+    "crystalcave:topaz_pillar"
+  ]
+}

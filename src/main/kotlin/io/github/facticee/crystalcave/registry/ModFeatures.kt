@@ -19,7 +19,7 @@ object ModFeatures {
 
     lateinit var CRYSTAL_FISSURE: CrystalFissureFeature
     lateinit var CRYSTAL_CHAMBER: CrystalChamberFeature
-    
+
     fun registerAll() {
         CRYSTAL_FISSURE = register("crystal_fissure", CrystalFissureFeature(CrystalFissureConfig.CODEC))
         CRYSTAL_CHAMBER = register("crystal_chamber", CrystalChamberFeature(CrystalChamberConfig.CODEC))

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "id": "crystalcave",
   "version": "${version}",
-  "name": "Crystal Caves",
-  "description": "New caves, ores and items",
+  "name": "Crystal Cave",
+  "description": "Erlebe atemberaubende, riesige Kristallhöhlen mit gefährlichen Herausforderungen!",
   "authors": [ "YourName" ],
   "contact": {},
-  "license": "AGPL-3.0",
+  "license": "MIT",
   "environment": "*",
   "entrypoints": {
     "main": [
