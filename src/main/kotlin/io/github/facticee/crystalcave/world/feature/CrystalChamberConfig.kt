@@ -7,7 +7,9 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 data class CrystalChamberConfig(
     val palette: CrystalPalette,
     val radius: IntRange2,
-    val thickness: Float
+    val innerThickness: Float,
+    val middleThickness: Float,
+    val outerThickness: Float
 ) : FeatureConfiguration {
 
     companion object {
@@ -15,7 +17,9 @@ data class CrystalChamberConfig(
             instance.group(
                 CrystalPalette.CODEC.fieldOf("palette").forGetter(CrystalChamberConfig::palette),
                 IntRange2.CODEC.fieldOf("radius").forGetter(CrystalChamberConfig::radius),
-                Codec.FLOAT.fieldOf("thickness").forGetter(CrystalChamberConfig::thickness)
+                Codec.FLOAT.fieldOf("inner_thickness").forGetter(CrystalChamberConfig::innerThickness),
+                Codec.FLOAT.fieldOf("middle_thickness").forGetter(CrystalChamberConfig::middleThickness),
+                Codec.FLOAT.fieldOf("outer_thickness").forGetter(CrystalChamberConfig::outerThickness)
             ).apply(instance, ::CrystalChamberConfig)
         }
     }
