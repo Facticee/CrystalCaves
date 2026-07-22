@@ -8,9 +8,7 @@ import net.minecraft.world.level.block.state.BlockState
 import kotlin.math.ceil
 import kotlin.math.sqrt
 
-/**
- * Erste Version der Bau-Werkzeuge für Crystal-Features.
- */
+ 
 object CrystalShapePainter {
 
     fun paintChamber(
@@ -19,102 +17,129 @@ object CrystalShapePainter {
         palette: CrystalPalette,
         center: BlockPos,
         radius: Float,
-        thickness: Float,
+        innerThickness: Float,
+        middleThickness: Float,
+        outerThickness: Float,
         yScale: Float = 1.0f
-    )  {
-        val outerR = radius + thickness
+    ) {
+        val outerR = radius + outerThickness
+        val middleR = radius + middleThickness
+        val innerR = radius + innerThickness
         val fillR = radius
 
         val range = ceil(outerR).toInt()
+        val yRange = ceil(outerR / yScale).toInt()
         val mutable = BlockPos.MutableBlockPos()
 
         for (x in -range..range) {
-            for (y in -range..range) {
+            for (y in -yRange..yRange) {
                 val worldY = center.y + y
                 for (z in -range..range) {
-                    val dist = sqrt((x * x + y * y + z * z).toDouble()).toFloat()
+                    val jitter = (random.nextFloat() - 0.5f) * 0.6f
+                    val sy = y * yScale
+                    val dist = sqrt((x * x).toDouble() + (sy * sy).toDouble() + (z * z).toDouble()).toFloat() + jitter
                     if (dist > outerR) continue
 
                     mutable.set(center.x + x, worldY, center.z + z)
-                    if (level.getBlockState(mutable).`is`(Blocks.BEDROCK)) continue
+                    val currentState = level.getBlockState(mutable)
+                    if (currentState.`is`(Blocks.BEDROCK)) continue
 
-                    if (dist <= fillR) {
-                        level.setBlock(mutable, Blocks.AIR.defaultBlockState(), 3)
-                    } else {
-                        val state = palette.innerLayer.getState(level, random, mutable)
-                        level.setBlock(mutable, state, 3)
-                    }
-                }
-            }
-        }
-    }
-
-    /** Simple Tunnel-Verbindung zwischen zwei Punkten */
-    fun paintTunnel(
-        level: WorldGenLevel,
-        random: RandomSource,
-        palette: CrystalPalette,
-        from: BlockPos,
-        to: BlockPos,
-        radius: Float
-    ) {
-        val dx = (to.x - from.x).toDouble()
-        val dy = (to.y - from.y).toDouble()
-        val dz = (to.z - from.z).toDouble()
-        val length = sqrt(dx * dx + dy * dy + dz * dz)
-        val steps = ceil(length * 1.5).toInt().coerceAtLeast(1)
-        val mutable = BlockPos.MutableBlockPos()
-        val r = ceil(radius).toInt()
-
-        for (s in 0..steps) {
-            val t = s.toDouble() / steps
-            val cx = from.x + dx * t
-            val cy = from.y + dy * t
-            val cz = from.z + dz * t
-
-            for (ox in -r..r) {
-                for (oy in -r..r) {
-                    for (oz in -r..r) {
-                        val dist = sqrt((ox * ox + oy * oy + oz * oz).toDouble()).toFloat()
-                        if (dist > radius) continue
-
-                        mutable.set((cx + ox).toInt(), (cy + oy).toInt(), (cz + oz).toInt())
-                        if (level.getBlockState(mutable).`is`(Blocks.BEDROCK)) continue
-
-                        if (dist <= radius * 0.6f) {
+                    when {
+                        dist <= fillR -> if (!currentState.isAir) {
                             level.setBlock(mutable, Blocks.AIR.defaultBlockState(), 3)
-                        } else {
-                            val state = palette.innerLayer.getState(level, random, mutable)
+                        }
+                        dist <= innerR -> {
+                            val roll = random.nextFloat()
+                            val state: BlockState = when {
+                                roll < palette.oreFillChance -> CrystalPalette.pickOre(random, palette)
+                                roll < palette.oreFillChance + 0.15f -> palette.altInnerLayer.getState(level, random, mutable)
+                                else -> palette.innerLayer.getState(level, random, mutable)
+                            }
                             level.setBlock(mutable, state, 3)
                         }
+                        dist <= middleR -> level.setBlock(mutable, palette.middleLayer.getState(level, random, mutable), 3)
+                        else -> level.setBlock(mutable, palette.outerLayer.getState(level, random, mutable), 3)
                     }
                 }
             }
         }
     }
 
-    fun paintPillar(
+    fun clearFill(
+        level: WorldGenLevel,
+        center: BlockPos,
+        radius: Float,
+        yScale: Float = 1.0f
+    ) {
+        val range = ceil(radius).toInt()
+        val yRange = ceil(radius / yScale).toInt()
+        val mutable = BlockPos.MutableBlockPos()
+
+        for (x in -range..range) {
+            for (y in -yRange..yRange) {
+                val worldY = center.y + y
+                for (z in -range..range) {
+                    val sy = y * yScale
+                    val dist = sqrt((x * x).toDouble() + (sy * sy).toDouble() + (z * z).toDouble()).toFloat()
+                    if (dist > radius) continue
+
+                    mutable.set(center.x + x, worldY, center.z + z)
+                    val currentState = level.getBlockState(mutable)
+                    if (currentState.`is`(Blocks.BEDROCK) || currentState.isAir) continue
+                    level.setBlock(mutable, Blocks.AIR.defaultBlockState(), 3)
+                }
+            }
+        }
+    }
+
+    fun paintShell(
         level: WorldGenLevel,
         random: RandomSource,
         palette: CrystalPalette,
-        baseCenter: BlockPos,
-        height: Int,
-        radius: Float
+        center: BlockPos,
+        radius: Float,
+        innerThickness: Float,
+        middleThickness: Float,
+        outerThickness: Float,
+        yScale: Float = 1.0f
     ) {
-        val r = ceil(radius).toInt()
+        val outerR = radius + outerThickness
+        val middleR = radius + middleThickness
+        val innerR = radius + innerThickness
+        val fillR = radius
+
+        val range = ceil(outerR).toInt()
+        val yRange = ceil(outerR / yScale).toInt()
         val mutable = BlockPos.MutableBlockPos()
 
-        for (h in 0 until height) {
-            val worldY = baseCenter.y + h
-            for (ox in -r..r) {
-                for (oz in -r..r) {
-                    val dist = sqrt((ox * ox + oz * oz).toDouble()).toFloat()
-                    if (dist > radius) continue
+        for (x in -range..range) {
+            for (y in -yRange..yRange) {
+                val worldY = center.y + y
+                for (z in -range..range) {
+                    val jitter = (random.nextFloat() - 0.5f) * 0.6f
+                    val sy = y * yScale
+                    val dist = sqrt((x * x).toDouble() + (sy * sy).toDouble() + (z * z).toDouble()).toFloat() + jitter
+                    if (dist > outerR || dist <= fillR) continue
 
-                    mutable.set(baseCenter.x + ox, worldY, baseCenter.z + oz)
-                    if (level.getBlockState(mutable).`is`(Blocks.BEDROCK)) continue
+                    mutable.set(center.x + x, worldY, center.z + z)
+                    val currentState = level.getBlockState(mutable)
+                    // Schon Luft (von clearFill dieser oder einer anderen
+                    // überlappenden Kammer) -> niemals wieder zubauen.
+                    if (currentState.`is`(Blocks.BEDROCK) || currentState.isAir) continue
 
-                    level.setBlock(mutable, CrystalPalette.pickOre(random, palette), 3)
+                    when {
+                        dist <= innerR -> {
+                            val roll = random.nextFloat()
+                            val state: BlockState = when {
+                                roll < palette.oreFillChance -> CrystalPalette.pickOre(random, palette)
+                                roll < palette.oreFillChance + 0.15f -> palette.altInnerLayer.getState(level, random, mutable)
+                                else -> palette.innerLayer.getState(level, random, mutable)
+                            }
+                            level.setBlock(mutable, state, 3)
+                        }
+                        dist <= middleR -> level.setBlock(mutable, palette.middleLayer.getState(level, random, mutable), 3)
+                        else -> level.setBlock(mutable, palette.outerLayer.getState(level, random, mutable), 3)
+                    }
                 }
             }
         }
