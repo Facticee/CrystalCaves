@@ -11,9 +11,15 @@ import net.minecraft.world.entity.Mob
 import net.minecraft.world.entity.monster.Enemy
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.entity.EquipmentSlot
+import org.slf4j.LoggerFactory
 
 
 class CrystalCaveMod : ModInitializer {
+
+    companion object {
+        const val MOD_ID = "crystalcave"
+        private val LOGGER = LoggerFactory.getLogger(MOD_ID)
+    }
 
     override fun onInitialize() {
         ModBlocks.registerAll()
