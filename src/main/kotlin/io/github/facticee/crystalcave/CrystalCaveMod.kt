@@ -22,10 +22,13 @@ class CrystalCaveMod : ModInitializer {
     }
 
     override fun onInitialize() {
+
+
         ModBlocks.registerAll()
         ModCreativeTab.registerAll()
         ModItems.registerAll()
         ModRecipes.registerAll()
+        
 
 
         ServerTickEvents.END_SERVER_TICK.register { server ->
