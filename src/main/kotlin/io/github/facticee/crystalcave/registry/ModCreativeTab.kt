@@ -38,6 +38,11 @@ object ModCreativeTab {
                 output.accept(ModItems.RAW_SAPPHIRE)
                 output.accept(ModItems.RAW_MOONSTONE)
 
+                output.accept(ModItems.MOONSTONE_HELMET)
+                output.accept(ModItems.MOONSTONE_CHESTPLATE)
+                output.accept(ModItems.MOONSTONE_LEGGINGS)
+                output.accept(ModItems.MOONSTONE_BOOTS)
+
 
                 // Ores
                 output.accept(ModItems.SAPPHIRE_ORE)
