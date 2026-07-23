@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [ "crystalcave:topaz_block" ],
+  "result": { "id": "crystalcave:topaz", "count": 4 }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "crystalcave:sapphire",
+    "crystalcave:sapphire",
+    "crystalcave:sapphire",
+    "crystalcave:sapphire"
+  ],
+  "result": {
+    "id": "crystalcave:sapphire_block",
+    "count": 1
+  }
+}

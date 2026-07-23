@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "crystalcave:block/topaz_block",
+    "side": "crystalcave:block/topaz_block"
+  }
+}

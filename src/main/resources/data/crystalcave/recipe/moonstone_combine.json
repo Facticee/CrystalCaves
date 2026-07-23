@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "crystalcave:raw_moonstone",
+    "crystalcave:raw_moonstone",
+    "crystalcave:raw_moonstone",
+    "crystalcave:raw_moonstone"
+  ],
+  "result": {
+    "id": "crystalcave:moonstone",
+    "count": 1
+  }
+}

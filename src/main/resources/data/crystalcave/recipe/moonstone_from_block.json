@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [ "crystalcave:moonstone_block" ],
+  "result": { "id": "crystalcave:moonstone", "count": 4 }
+}

@@ -1,0 +1,36 @@
+{
+  "type": "crystalcave:crystal_chamber",
+  "config": {
+    "palette": {
+      "inner_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": { "Name": "crystalcave:crystal_stone" }
+      },
+      "alternate_inner_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": { "Name": "crystalcave:crystal_tuff" }
+      },
+      "middle_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": { "Name": "minecraft:calcite" }
+      },
+      "outer_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": { "Name": "minecraft:tuff" }
+      },
+      "primary_ores": [
+        { "Name": "crystalcave:moonstone_ore" },
+        { "Name": "crystalcave:moonstone_block" }
+      ],
+      "accent_ores": [
+        { "Name": "crystalcave:topaz_ore" }
+      ],
+      "accent_chance": 0.1,
+      "ore_fill_chance": 0.4
+    },
+    "radius": { "min": 4, "max": 6 },
+    "inner_thickness": 0.8,
+    "middle_thickness": 1.2,
+    "outer_thickness": 1.6
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "crystalcave:raw_sapphire",
+    "crystalcave:raw_sapphire",
+    "crystalcave:raw_sapphire",
+    "crystalcave:raw_sapphire"
+  ],
+  "result": {
+    "id": "crystalcave:sapphire",
+    "count": 1
+  }
+}

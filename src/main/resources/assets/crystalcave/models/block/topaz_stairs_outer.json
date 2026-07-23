@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "crystalcave:block/topaz_block",
+    "top": "crystalcave:block/topaz_block",
+    "side": "crystalcave:block/topaz_block"
+  }
+}

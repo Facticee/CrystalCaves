@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": "crystalcave:topaz_block"
+  },
+  "result": {
+    "id": "crystalcave:topaz_slab",
+    "count": 6
+  }
+}
