@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "crystalcave:moonstone"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "crystalcave:moonstone"
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "crystalcave:block/topaz_slab"
+    },
+    "type=double": {
+      "model": "crystalcave:block/topaz_block"
+    },
+    "type=top": {
+      "model": "crystalcave:block/topaz_slab_top"
+    }
+  }
+}
