@@ -8,27 +8,27 @@ import net.minecraft.tags.TagKey
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.equipment.ArmorMaterial
 import net.minecraft.world.item.equipment.ArmorType
-import net.minecraft.world.item.equipment.EquipmentAssets
+import net.minecraft.world.item.equipment.EquipmentAsset
+import java.util.EnumMap
 
 object ModArmorMaterials {
 
-    val REPAIRS_MOONSTONE_ARMOR = TagKey.create(
+    val REPAIRS_MOONSTONE_ARMOR: TagKey<Item> = TagKey.create(
         Registries.ITEM,
         Identifier.fromNamespaceAndPath("crystalcave", "repairs_moonstone_armor")
     )
 
-    val MOONSTONE_EQUIPMENT_ASSET = ResourceKey.create(
-        EquipmentAssets.ROOT_ID,
+    val MOONSTONE_EQUIPMENT_ASSET: ResourceKey<EquipmentAsset> = ResourceKey.create(
+        net.minecraft.world.item.equipment.EquipmentAssets.ROOT_ID,
         Identifier.fromNamespaceAndPath("crystalcave", "moonstone")
     )
 
-
-    private val MOONSTONE_DEFENSE = mapOf(
-        ArmorType.BOOTS to 2,
-        ArmorType.LEGGINGS to 5,
-        ArmorType.CHESTPLATE to 6,
-        ArmorType.HELMET to 2
-    )
+    private val MOONSTONE_DEFENSE = EnumMap<ArmorType, Int>(ArmorType::class.java).apply {
+        put(ArmorType.BOOTS, 2)
+        put(ArmorType.LEGGINGS, 5)
+        put(ArmorType.CHESTPLATE, 6)
+        put(ArmorType.HELMET, 2)
+    }
 
     val MOONSTONE = ArmorMaterial(
         15,

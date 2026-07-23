@@ -60,7 +60,16 @@ class CrystalCaveMod : ModInitializer {
             EquipmentSlot.HEAD, EquipmentSlot.CHEST,
             EquipmentSlot.LEGS, EquipmentSlot.FEET
         )
+        for (slot in armorSlots) {
+            val stack = player.getItemBySlot(slot)
+            val item = stack.item
+            if (item == ModItems.MOONSTONE_HELMET    ||
+                item == ModItems.MOONSTONE_CHESTPLATE ||
+                item == ModItems.MOONSTONE_LEGGINGS   ||
+                item == ModItems.MOONSTONE_BOOTS) return true
 
+            if (MoonstoneUpgradeRecipe.hasMoonstoneMarker(stack)) return true
+        }
         return false
     }
 }
