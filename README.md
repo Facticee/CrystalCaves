@@ -16,7 +16,7 @@ Please install this Mod aswell as the Support Mods [Fabric API](https://github.c
 
 **Step 2: Download Your Mods**
 
-1. Find the mods you want to use. For this Mod you need the support mods mentioned above in "Setup".
+1. Find the mods you want to use. For this Mod you need the support mods mentioned above in "Setup". Find this mod under [Versions](https://github.com/Facticee/CrystalCaves/releases/)
 2. Make sure the versions match.
 
 **Step 3: Move Mods to the Folder**
