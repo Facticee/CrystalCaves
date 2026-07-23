@@ -6,9 +6,12 @@ import io.github.facticee.crystalcave.registry.ModRecipes
 import net.minecraft.core.component.DataComponents
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.RegistryFriendlyByteBuf
+import net.minecraft.network.chat.Component
+import net.minecraft.network.chat.Style
 import net.minecraft.network.codec.StreamCodec
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.component.CustomData
+import net.minecraft.world.item.component.ItemLore
 import net.minecraft.world.item.crafting.CraftingInput
 import net.minecraft.world.item.crafting.CustomRecipe
 import net.minecraft.world.item.crafting.RecipeSerializer
@@ -42,11 +45,17 @@ class MoonstoneUpgradeRecipe : CustomRecipe() {
     }
 
     override fun assemble(input: CraftingInput): ItemStack {
-        val result = input.getItem(4).copy()
+
+        val result = input.getItem(4).copy() // 4 weil 0 ist das feld oben links 1 das mitte oben 2 das oben rechts usw
 
         val tag = CompoundTag()
         tag.putBoolean(MOONSTONE_MARKER_KEY, true)
         result.set(DataComponents.CUSTOM_DATA, CustomData.of(tag))
+
+        val loreLine = Component.literal("Merged with Moonstone")
+            .withStyle(Style.EMPTY.withColor(0xB39DDB).withItalic(false))
+        val existingLore = result.get(DataComponents.LORE) ?: ItemLore(emptyList())
+        result.set(DataComponents.LORE, existingLore.withLineAdded(loreLine))
 
         return result
     }

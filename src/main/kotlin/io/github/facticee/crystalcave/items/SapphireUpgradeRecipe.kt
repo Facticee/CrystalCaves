@@ -5,8 +5,11 @@ import io.github.facticee.crystalcave.registry.ModItems
 import io.github.facticee.crystalcave.registry.ModRecipes
 import net.minecraft.core.component.DataComponents
 import net.minecraft.network.RegistryFriendlyByteBuf
+import net.minecraft.network.chat.Component
+import net.minecraft.network.chat.Style
 import net.minecraft.network.codec.StreamCodec
 import net.minecraft.world.item.ItemStack
+import net.minecraft.world.item.component.ItemLore
 import net.minecraft.world.item.crafting.CraftingInput
 import net.minecraft.world.item.crafting.CustomRecipe
 import net.minecraft.world.item.crafting.RecipeSerializer
@@ -40,15 +43,21 @@ class SapphireUpgradeRecipe : CustomRecipe() {
     }
 
     override fun assemble(input: CraftingInput): ItemStack {
-        val result = input.getItem(4).copy() // nutzt das item was im 4 slot (mitte) ist
-
-        // durability um 20% erhöhen
+        val result = input.getItem(4).copy()
+        // erhöht maxDamage (durability) um 20%
         val currentMax = result.maxDamage
         val newMax = currentMax + ceil(currentMax * 0.20).toInt().coerceAtLeast(1)
         result.set(DataComponents.MAX_DAMAGE, newMax)
 
+        val loreLine = Component.literal("Sapphire Reinforced")
+            .withStyle(Style.EMPTY.withColor(0x3FA9F5).withItalic(false))
+        val existingLore = result.get(DataComponents.LORE) ?: ItemLore(emptyList())
+        result.set(DataComponents.LORE, existingLore.withLineAdded(loreLine))
+
         return result
     }
+
+
 
     override fun getSerializer(): RecipeSerializer<out CustomRecipe> {
         return ModRecipes.SAPPHIRE_UPGRADE_SERIALIZER
