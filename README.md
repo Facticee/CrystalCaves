@@ -29,38 +29,45 @@ Please install this Mod aswell as the Support Mods [Fabric API](https://github.c
 
 ## Features & Describtion
 
-### New Caves
-* **Dynamic Worldgen:** Discover new caves ranging from rounded geodes to  horizontal tunnels and vertical fissures.
-* **Custom Ores:** Explore these caves to find new ores: **Sapphire**, **Moonstone**, and **Topaz**.
+### Sapphire & Moonstone
 
----
+- Can only be mined with a **Golden Pickaxe**.
+- Drop **Raw Sapphire** or **Raw Moonstone**.
+- Craft **4 Raw Gems** into **1 Sapphire** or **1 Moonstone**.
 
-### Ores & Crafting Mechanics
+### Topaz
 
-#### Sapphire & Moonstone Ores
-* **Mining Requirement:** Can **only** be mined using a **Gold Pickaxe**.
-* **Raw Gems:** Mining these ores drops **Raw Sapphire** or **Raw Moonstone**.
-* **Gem Refinement:** Craft a 2x2 grid of Raw Gems (4 total) in a Crafting Table to obtain "normal" **Sapphire** or **Moonstone**.
+- Drops Topaz directly.
+- Used for decorative building blocks.
+- Can be crafted into:
+  - Topaz Blocks
+  - Topaz Stairs
+  - Topaz Slabs
+  - Topaz Pillars
 
-#### Topaz (only decoration)
-* **Direct Mining:** Drops refined **Topaz** directly upon mining (no extra refining steps required).
-* **Decorative Blocks:** Craft 4 Topaz in any 2x2 arrangement to create a **Topaz Block**.
-* **Building Variants:** Use Topaz Blocks to craft standard building shapes:
-  * Topaz Stairs
-  * Topaz Slabs
-  * Topaz Pillars
 
----
+## Item Upgrades
 
-### Unique Item Upgrades
-Enhance your gear by placing any breakable item (with durability) in the middle of a Crafting Table and surrounding it with **8 of the new ores**:
+Place any item with durability in the center of a crafting table and surround it with **8 new ores**.
 
-* **Sapphire Infusion (8 sapphire) (Durability Boost):**
-  * Surrounding an item with **8 Sapphires** upgrades it giving it **+20% Max Durability**.
-* **Moonstone Infusion (8 moonstone)):**
-  * Surrounding an item with **8 Moonstones** adds it with a curse/buff. While holding or wearing the upgraded item hostile monsters will see you from up to **64 blocks away** (increase)
+### Sapphire Upgrade
 
----
+- Costs **8 Sapphire**.
+- Increases the items maximum durability with **20%**.
+
+### Moonstone Upgrade
+
+- Costs **8 Moonstone**.
+- Hostile mobs can see you from up to **64 blocks away** while holding or wearing the upgraded item.
+
+## Decorative Blocks
+
+Craft decorative blocks using **4 new ores** in a **2×2** crafting grid. Topaz got more blocks like said above
+
+Available blocks:
+- Sapphire Block
+- Moonstone Block
+- Topaz Block
 
 ### Decorative Gem Blocks
 * **Sapphire & Moonstone Blocks:** Combine 4 refined Sapphires or 4 refined Moonstones in a 2x2 crafting grid to get decorative blocks.
