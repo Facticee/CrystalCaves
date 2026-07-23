@@ -6,6 +6,7 @@ import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.Identifier
 import net.minecraft.world.item.*
+import net.minecraft.world.item.equipment.ArmorType
 import net.minecraft.world.level.block.Block
 
 object ModItems {
@@ -15,6 +16,11 @@ object ModItems {
     lateinit var TOPAZ: Item
     lateinit var RAW_SAPPHIRE: Item
     lateinit var RAW_MOONSTONE: Item
+
+    lateinit var MOONSTONE_HELMET: Item
+    lateinit var MOONSTONE_CHESTPLATE: Item
+    lateinit var MOONSTONE_LEGGINGS: Item
+    lateinit var MOONSTONE_BOOTS: Item
 
     // blocks
     lateinit var CRYSTAL_STONE: Item
@@ -60,6 +66,11 @@ object ModItems {
         RAW_SAPPHIRE = register("raw_sapphire", Item.Properties()) { Item(it) }
         RAW_MOONSTONE = register("raw_moonstone", Item.Properties()) { Item(it) }
 
+        MOONSTONE_HELMET = register("moonstone_helmet", Item.Properties().humanoidArmor(ModArmorMaterials.MOONSTONE,
+            ArmorType.HELMET)) { Item(it) }
+        MOONSTONE_CHESTPLATE = register("moonstone_chestplate", Item.Properties().humanoidArmor(ModArmorMaterials.MOONSTONE, ArmorType.CHESTPLATE)) { Item(it) }
+        MOONSTONE_LEGGINGS = register("moonstone_leggings", Item.Properties().humanoidArmor(ModArmorMaterials.MOONSTONE, ArmorType.LEGGINGS)) { Item(it) }
+        MOONSTONE_BOOTS = register("moonstone_boots", Item.Properties().humanoidArmor(ModArmorMaterials.MOONSTONE, ArmorType.BOOTS)) { Item(it) }
 
         // blocks
         CRYSTAL_STONE = registerBlockItem("crystal_stone", ModBlocks.CRYSTAL_STONE)
